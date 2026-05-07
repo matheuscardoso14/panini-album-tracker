@@ -1,0 +1,16 @@
+.team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  &__title {
+      font-weight: 600;
+      font-size: 3rem
+  }
+  &__stickers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+  }
+}

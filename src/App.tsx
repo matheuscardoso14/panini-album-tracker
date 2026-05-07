@@ -1,8 +1,16 @@
+import "./App.scss";
+import Header from "./Components/Header/Header";
+import TeamSection from "./Components/TeamSection/TeamSection";
+
 function App() {
   return (
-      <div>
-        Hello, world!
-      </div>
+    <>
+      <Header />
+        <main>
+          <TeamSection />
+          <TeamSection />
+        </main>
+    </>
   )
 }
 
