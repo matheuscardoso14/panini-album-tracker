@@ -13,10 +13,9 @@
       color: variables.$text-color;
   }
   &__stickers {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(10, 6rem);
       gap: 1.5rem;
+      width: 100%;
   }
 }
