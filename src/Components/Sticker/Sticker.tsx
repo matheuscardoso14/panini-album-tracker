@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 import { ownedStickersAtom } from "../../state/ownedStickersState";
 import changeStickerCountType from "../../enums/changeStickerCountType";
 
-function Sticker({ number, team, id }: { number: number | string, team: string, id: string }) {
+function Sticker({ name, number, team, id }: { name: string, number: number | string, team: string, id: string }) {
   const [ownedStickers, setOwnedStickers] = useAtom(ownedStickersAtom);
   const stickerCount = ownedStickers.find((sticker) => sticker.id === id)?.count ?? 0;
   const isOwned = (stickerCount > 0);
@@ -31,6 +31,7 @@ function Sticker({ number, team, id }: { number: number | string, team: string, 
   return (
     <div className={styles.container}>
       <div className={`${styles.sticker} ${isOwned ? styles.owned : styles["not-owned"]}`} onClick={onClick}>
+          <p className={styles.sticker__name}>{name}</p>
           <p className={styles.sticker__number}>{number}</p>
           <p className={styles.sticker__team}>{team}</p>
       </div>

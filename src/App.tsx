@@ -25,10 +25,12 @@ function App() {
                     shortTeam = "CC"
                   }
                   return (
-                    <Sticker number={sticker.number ?? "00"}
-                             team={shortTeam}
-                             id={sticker.id}
-                             key={sticker.id} />
+                    <Sticker
+                      name={sticker.name}
+                      number={sticker.number ?? "00"}
+                      team={shortTeam}
+                      id={sticker.id}
+                      key={sticker.id} />
                   )
                 })}
               </>
