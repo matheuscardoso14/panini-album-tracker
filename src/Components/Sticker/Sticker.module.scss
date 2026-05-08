@@ -10,8 +10,9 @@
     justify-content: center;
     flex-direction: column;
     padding: 1rem;
-    color: white;
+    font-family: variables.$text-font;
     font-weight: 600;
+    color: white;
     border-radius: 1rem;
     position: relative;
     height: 5rem;
@@ -77,6 +78,8 @@
       background-color: variables.$decrease-button-background;
     }
     .count {
+      font-family: variables.$text-font;
+      font-weight: 600;
       font-size: 1.1rem;
       color: variables.$text-color;
     }

@@ -7,9 +7,9 @@ header {
   align-items: center;
   background-color: variables.$header-background;
   .title {
-      font-family: "Segoe UI", sans-serif;
+      font-family: variables.$header-font;
       font-size: 2rem;
-      font-weight: 600;
+      font-weight: 700;
       color: white;
   }
 }
