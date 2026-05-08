@@ -1,9 +1,10 @@
+@use "../../variables";
+
 .sticker {
-	align-items: center;
-	display: flex;
+  align-items: center;
+  display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: darkslategray;
   padding: 1rem;
   color: white;
   font-weight: 600;
@@ -11,14 +12,34 @@
   position: relative;
   height: 5rem;
   width: 3.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: variables.$light;
+  }
 
   &__number {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
 
   &__team {
-      position: absolute;
-      bottom: 1rem;
-      font-size: 1rem;
+    position: absolute;
+    text-align: center;
+    bottom: 1rem;
+    font-size: 1rem;
   }
+}
+
+.not-owned {
+  background-color: variables.$sticker-not-owned;
+}
+
+.owned {
+  background-color: variables.$sticker-owned;
 }

@@ -1,13 +1,11 @@
-import Sticker from "../Sticker/Sticker";
 import styles from "./TeamSection.module.scss";
 
-function TeamSection() {
+function TeamSection({ team, children }: { team: string, children: React.ReactElement }) {
     return (
         <section className={styles.team}>
-            <h2 className={styles.team__title}>Brazil</h2>
+            <h2 className={styles.team__title}>{team}</h2>
             <div className={styles.team__stickers}>
-                <Sticker number="67" team="BRA" />
-                <Sticker number="42" team="BRA" />
+                {children}
             </div>
         </section>
     )

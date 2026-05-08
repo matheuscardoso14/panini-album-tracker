@@ -1,15 +1,21 @@
+@use "../../variables";
+
+
 .team {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 2rem;
   &__title {
       font-weight: 600;
-      font-size: 3rem
+      font-size: 3rem;
+      color: variables.$text-color;
   }
   &__stickers {
       display: flex;
+      justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
       gap: 1.5rem;
   }

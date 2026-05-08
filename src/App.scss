@@ -1,8 +1,11 @@
+@use "./variables";
+
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-  padding-top: 2rem;
+  padding: 2rem;
+  background-color: variables.$main-background;
 }

@@ -1,13 +1,14 @@
+@use "../../variables";
+
 header {
-  height: 4rem;
-  width: 100dvw;
+  height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: purple;
+  background-color: variables.$header-background;
   .title {
       font-family: "Segoe UI", sans-serif;
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: 600;
       color: white;
   }
