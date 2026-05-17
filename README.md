@@ -6,6 +6,7 @@ A web application built with **React**, **TypeScript**, and **Vite** to help col
 
 ## Features
 
+- **Progress Tracking**: View overall album progress, completed teams, total duplicates, and your most duplicated sticker.
 - **Sticker Management**: Mark stickers as owned or missing.
 - **Duplicate Tracking**: Easily increase or decrease the counter for repeated stickers (more than 1 sticker).
 - **Search**: Quickly find stickers using fuzzy search by name, team, or number.
