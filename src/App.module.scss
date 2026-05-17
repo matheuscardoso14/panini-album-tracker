@@ -1,0 +1,52 @@
+@use "./variables";
+
+// Main layout container, calculates full viewport height while excluding header and footer
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(100dvh - (variables.$header-height + variables.$footer-height));
+  gap: 2rem;
+  padding: 2rem;
+  background-color: variables.$main-background;
+  box-sizing: border-box;
+  
+  // Container for the search field, filters, and sorting controls
+  .controls__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // Limits width for desktop while ensuring responsiveness on smaller screens
+    min-width: 30%;
+    max-width: 90%;
+    gap: .7rem;
+
+    & > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // Allows the radio buttons to wrap onto new lines gracefully if the screen is too narrow
+      flex-wrap: wrap;
+      gap: .5rem;
+
+      & > span {
+        // Styling for the "Filters:" and "Order:" text labels
+        font-family: variables.$text-font;
+        font-size: 1rem;
+        color: variables.$text-color;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // Styling for the empty state text when no stickers match the active criteria
+  .no_stickers_found__text {
+    font-family: variables.$text-font;
+    font-size: 2rem;
+    font-weight: 600;
+    color: variables.$text-color;
+    padding: 6rem 0;
+  }
+}

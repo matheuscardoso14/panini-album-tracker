@@ -1,0 +1,19 @@
+@use "../../variables";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .input {
+    color: variables.$text-font;
+    accent-color: variables.$light;
+  }
+
+  .label {
+    font-family: variables.$text-font;
+    font-weight: 500;
+    font-size: .8rem;
+    color: white;
+  }
+}

@@ -1,15 +1,15 @@
 @use "../../variables";
 
-header {
-  height: variables.$header-height;
+footer {
+  height: variables.$footer-height;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: variables.$header-background;
-  .title {
-      font-family: variables.$header-font;
-      font-size: 2rem;
-      font-weight: 700;
+  .text {
+      font-family: variables.$text-font;
+      font-size: 1rem;
+      font-weight: 600;
       color: variables.$text-color;
       text-align: center;
   }

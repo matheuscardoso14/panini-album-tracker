@@ -1,0 +1,10 @@
+@use "../../variables";
+
+.input {
+  outline: none;
+  width: 100%;
+  padding: .6rem;
+  border-radius: 1rem;
+  border: none;
+  font-family: variables.$text-font;
+}
