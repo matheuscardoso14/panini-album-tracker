@@ -1,0 +1,30 @@
+@use "../../variables";
+
+.block {
+  display: grid;
+	grid-template-rows: 35% auto;
+  justify-content: center;
+  align-items: center;
+	gap: .3rem;
+  min-width: 5rem;
+	min-height: 3rem;
+	padding: .8rem 1.5rem;
+	color: variables.$text-color;
+	border-radius: 1rem;
+
+  .title {
+    font-family: variables.$header-font;
+		font-size: 1.2rem;
+		font-weight: 600;
+		grid-row: 1;
+		text-align: center;
+  }
+
+	.value {
+		font-family: variables.$text-font;
+		font-size: 1.2rem;
+		font-weight: 500;
+		grid-row: 2;
+		text-align: center;
+	}
+}

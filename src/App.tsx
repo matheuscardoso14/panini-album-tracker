@@ -13,6 +13,7 @@ import { ownedStickersAtom } from "./state/ownedStickersState";
 import Footer from "./Components/Footer/Footer";
 import Filter from "./enums/Filter";
 import SortOrder from "./enums/SortOrder";
+import StatBlock from "./Components/StatBlock/StatBlock";
 
 /**
  * App Component
@@ -25,9 +26,34 @@ function App() {
   const ownedStickers = useAtomValue(ownedStickersAtom);
   // Retrieve a unique set of teams present in the album for structural rendering
   // The Set naturally filters out duplicate team names from the parsed data array
-  const teams = new Set(stickers.map((sticker) => sticker.team));
+  const teams = useMemo(() => new Set(stickers.map((sticker) => sticker.team)), [stickers]);
   // Retrieves the current text the user typed into the search bar
   const searchTerm = useAtomValue(searchTermAtom);
+
+  // --- Statistics Calculations ---
+  
+  // Calculate overall album progress (e.g., "250/991 (25%)")
+  const progress = `${ownedStickers.length}/${stickers.length} (${Number((ownedStickers.length / stickers.length).toFixed(2)) * 100}%)`;
+  // Calculate the total number of duplicate stickers available for trading
+  const totalDuplicates = useMemo(() => ownedStickers.filter((sticker) => sticker.count > 1).reduce((acc, sticker) => acc + (sticker.count - 1), 0), [ownedStickers]);
+  // Identify the single sticker the user has the most duplicates of
+  const mostDuplicatedSticker = useMemo(() => {
+    const mostDuplicated = ownedStickers.reduce((acc, sticker) => sticker.count > acc.count ? sticker : acc, { id: "", count: 0 })
+    const name  = stickers.find((sticker) => sticker.id === mostDuplicated.id)?.name
+
+    if (mostDuplicated.count > 0)  return { name, count: mostDuplicated.count }
+    return { name: "None", count: 0 }
+  }, [ownedStickers, stickers]);
+  // Calculate how many teams have all their stickers collected
+  const completedTeams = useMemo(() => {
+    return `${[...teams].filter((team) => {
+      const teamStickers = stickers.filter((sticker) => sticker.team === team);
+      const ownedCount = ownedStickers.filter((sticker) => teamStickers.map((sticker) => sticker.id).includes(sticker.id)).length;
+      return ownedCount === teamStickers.length;
+    }).length}/${teams.size}`;
+  }, [teams, stickers, ownedStickers]);
+
+  // --- Filtering and Sorting ---
 
   // Local state for tracking which filter and sort radio buttons are currently active
   const [activeFilter, setActiveFilter] = useState(Filter.ALL);
@@ -64,6 +90,9 @@ function App() {
     return filtered;
   }, [stickers, ownedStickers, activeFilter, activeSort])
 
+
+  // --- Fuzzy Search ---
+
   // Initialize Fuse.js for fuzzy text searching
   const stickersFuse = useMemo(() => new Fuse(filteredStickers, {
     keys: ["name", "team", "number"], // Defines the properties Fuse should look into
@@ -87,6 +116,12 @@ function App() {
     <>
       <Header />
       <main>
+        <div className={styles.stats__container}>
+          <StatBlock title="Progress" value={progress} color="#006ECF" />
+          <StatBlock title="Completed teams" value={completedTeams} color="#9151B8" />
+          <StatBlock title="Duplicates" value={totalDuplicates} color="#F24F4F" />
+          <StatBlock title="Most duplicated" value={`${mostDuplicatedSticker.name} ${mostDuplicatedSticker.count > 0 ? `(${mostDuplicatedSticker.count}x)` : ""}`} color="#EEB72B" />
+        </div>
         {/* UI controls container for search, filtering, and sorting */}
         <div className={styles.controls__container}>
           <SearchField placeholder="Search stickers" />

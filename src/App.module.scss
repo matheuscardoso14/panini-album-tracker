@@ -11,6 +11,15 @@ main {
   padding: 2rem;
   background-color: variables.$main-background;
   box-sizing: border-box;
+
+  .stats__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    width: 75%;
+  }
   
   // Container for the search field, filters, and sorting controls
   .controls__container {
